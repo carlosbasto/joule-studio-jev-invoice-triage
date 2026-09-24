@@ -121,4 +121,4 @@ supplier-invoice-triage-agent/
 
 ## License
 
-No license is included in this sanitized package. Before publishing the repository, add the license approved for this code and confirm that you are authorized to publish and license the Joule Studio-generated scaffold and any modifications.
+This project is licensed under the Apache License 2.0. See the `LICENSE` file for details.
