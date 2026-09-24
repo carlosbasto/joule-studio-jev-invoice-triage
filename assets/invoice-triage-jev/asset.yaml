@@ -1,0 +1,42 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: agent
+
+metadata:
+  name: invoice-triage-jev
+  version: "1.0.0"
+
+provides:
+  apis:
+    - name: invoice-triage-jev
+      kind: a2a
+      ordId: customer.build:apiResource:supplier-invoice-triage-agent.invoice-triage-jev:v1
+      description: "AI agent for blocked supplier-invoice triage. It gathers invoice and vendor evidence and uses TypeSafe JEV to guard release_payment_block before the state-changing release can execute."
+
+container:
+  buildPath: .
+  port: 5000
+
+probes:
+  startup:
+    path: /.well-known/agent-card.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent-card.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent-card.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# This public sample defaults to the bundled mock tool set. Set IBD_TESTING=0
+# only after configuring the real Agent Gateway / MCP dependencies for your
+# environment. Supply TYPESAFE_API_KEY through your runtime's secret/configuration
+# mechanism. Never put credentials in this manifest or in source code.

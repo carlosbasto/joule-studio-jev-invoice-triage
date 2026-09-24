@@ -1,0 +1,10 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: supplier-invoice-triage-agent
+  version: "1.0.0"
+  description: "Public demo of a blocked supplier-invoice triage agent for Joule Studio. It uses synthetic business data and a TypeSafe JEV decision layer to guard the state-changing payment-block release. Only an explicit JEV allow can invoke the original release tool."
+
+assets:
+  - ref: ./assets/invoice-triage-jev/asset.yaml
