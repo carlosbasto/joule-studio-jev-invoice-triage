@@ -1,6 +1,6 @@
 # Supplier Invoice Triage Agent for Joule Studio with JEV
 
-Public companion sample for the blocked supplier-invoice scenario described in the SAP Community article **“Joule Studio 2.0 with JEV at the Decision Boundary of the Autonomous Enterprise.”**
+Public companion sample for the blocked supplier-invoice scenario described in the SAP Community article **“Joule Studio with JEV at the Decision Boundary of the Autonomous Enterprise.”**
 
 The agent gathers synthetic invoice and vendor evidence, reasons about whether a payment block should be released, and wraps the state-changing `release_payment_block` tool with a TypeSafe JEV decision gate. The original release coroutine runs **only after an explicit JEV `allow`**. `deny`, `review`, `confirm`, missing/invalid decisions, or JEV failures do not execute the release.
 
